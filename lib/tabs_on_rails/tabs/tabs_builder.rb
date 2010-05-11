@@ -72,7 +72,7 @@ module TabsOnRails
       #   # => "</ul>"
       #
       def close_tabs(options = {})
-        "</ul>"
+        "</ul>".html_safe
       end
 
     end

@@ -115,16 +115,17 @@ module TabsOnRails
 
       def tabs_tag(options = {}, &block)
         raise LocalJumpError, "no block given" unless block_given?
-        
+
         options = options.dup
         open_tabs_options  = options.delete(:open_tabs)  || {}
         close_tabs_options = options.delete(:close_tabs) || {}
         tabs = Tabs.new(self, { :namespace => :default }.merge(options))
 
-        concat(tabs.open_tabs(open_tabs_options).to_s)
-        yield  tabs
-        concat(tabs.close_tabs(close_tabs_options).to_s)
+        tabs.open_tabs(open_tabs_options).to_s <<
+          with_output_buffer{ block.call(tabs) } <<
+          tabs.close_tabs(close_tabs_options).to_s
       end
+
 
     end
   end

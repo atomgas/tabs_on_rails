@@ -25,4 +25,6 @@ module TabsOnRails
   GEM             = 'tabs_on_rails'
   AUTHOR          = 'Simone Carletti <weppos@weppos.net>'
   
-end
+end                    
+
+ActionController::Base.send :include, TabsOnRails::ControllerMixin
