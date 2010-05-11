@@ -4,6 +4,8 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 require 'tabs_on_rails'
+                            
+
 
 
 PKG_NAME    = ENV['PKG_NAME']    || TabsOnRails::GEM
@@ -44,4 +46,23 @@ begin
   end
 rescue LoadError
   puts "CodeStatistics (Rails) is not available"
+end
+          
+
+require 'rubygems'
+require 'rake'
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "tabs_on_rails"
+    gem.summary = %Q{Rails 3 compatible ? tabs_on_rails}
+    gem.description = %Q{TabsOnRails is a simple Rails plugin for creating and managing Tabs.}
+    gem.email = "weppos@weppos.net"
+    gem.homepage = "http://github.com/atomgas/tabs_on_rails"
+    gem.authors = ["Simone Carletti"]
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
